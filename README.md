@@ -1,109 +1,187 @@
-Github
-Projects
-Experience
-Skills
-Achievements
-Contact Me
-Resume
-Shubham Kumar Rohit
-@progshubham
+<img width="1943" height="1093" alt="image" src="https://github.com/user-attachments/assets/cc2ff955-17c2-48c7-81c8-479a0f061850" />
 
+# DevPortfolio Template
 
-About Me
-I am working as an intern in IDO Sport Pvt Ltd, Noida at Noida in Python Web Development. I am skilled in Python, Django, Java, JSP, MVC, MySQL with database analysis and design. I have ability to produce best result in pressure situation and can work as individual as well as in group. I am strong in design and integration problem-solving skills. I love to play counter strike 1.6 and listening punjabi songs personally helps me to increase productivity :p.
+A modern, minimalist portfolio template built with Astro and Tailwind CSS. Perfect for developers looking to showcase their skills, experience, and projects in a clean, professional way.
 
-Experience
-Internship in Python Web Development at IDO Sport Pvt Ltd, Noida
--- Creating and exposing APIs in Python using Flask Framework 
--- Developing and optimizing database as well as Backend-system 
--- Implementing server side logics and writing web services 
--- Identifying and fixing Performance-Issues and possible weak points 
--- Input on the implementation of new applications 
--- Participating in the Database design
+This was completely rebuilt from the ground up from V1. This template was built to be entirely ready to go with a quick config edit (see below) but also provides the ability to easily extend in whatever way you want.
 
+This template also comes with `CLAUDE.md` and `.cursor/rules` files for easy integration with your existing AI workflows.
 
-(January 2017 - Present)
+> **📬 Connect & Share!**  
+> For questions and updates, feel free to reach out on [**X (Twitter)**](https://x.com/rfitzio).  
+> If you've built and published your personal site with this template, I'd love to see it! Send me a DM 🚀
 
-Projects
-Rail Live Status
-Developed a Website using JSP, Servlet, MySQL, Tomcat Apache 8, Eclipse,JSON in simple and responsive User interface on Indian Railway where user can check Live PNR Status, Live Rail Status, Live Seat Availability,Live Fare Enquiry.
+## Preview
 
-Sportido App (Backend)
-Developed RESTful API with Python and Flask for Sportido App (Android and iOS). Implemented server side logics and web services, integrated Paytm payment gateway. Fixed some Performance-issues and possible weak points of previous version backend.
+To view a live preview of the site, [click here](https://ryanfitzgerald.github.io/devportfolio/).
 
-Hostel Management System
-Developed E-Hostel Website using Advance Java(JSP, Servlet,Mysql) in very user friendly interface where student can register complain directly to chief- warden/warden/hostel-manager, can allot their room online, can change room.
+## Built With
 
-Training & Placement Cell Automation
-Developed TPO Automation which provides college can automate their whole placement system online where companies can conduct their different exams and can shortlist students as per their requirements in very short time and notify results to students.
+- **[Astro](https://astro.build/)** - Static site generator for modern web apps
+- **[Tailwind CSS v4](https://tailwindcss.com/)** - Utility-first CSS framework
+- **[Tabler Icons](https://tabler.io/icons)** - Free and open source icons
+- **TypeScript** - For type-safe configuration
 
-Library Management System
-LMS Automates the functionalities of any library, developed under the guidance of head librarian of BCET,Gurdaspur. Librarian can maintain the record of all books of their library in standard naming convention of books globally.
+## Updating the Template
 
-Technical Skills
-Web - Development
+### Configuration
 
-- Python, Flask, JSP, Servlets, JSON, XML
+The template is designed to be easily customizable through the `src/config.ts` file. This single file controls:
 
-Java Technology
+- **Personal Information**: Name, title, description
+- **Accent Color**: Primary color theme (changing this will change the accent color site wide)
+- **Social Links**: Email, LinkedIn, Twitter, GitHub (all optional)
+- **About Section**: Personal bio/description
+- **Skills**: List of technical skills
+- **Projects**: Project showcase with descriptions and links
+- **Experience**: Work history with bullet points
+- **Education**: Educational background and achievements
 
-- Exception Handling, JVM, Multi-threading, Collections, Serialization
+If skills, projects, experience, or education are removed from the config, those sections will be hidden entirely.
 
-IDE
+### Example structures
 
-- PyCharm, Eclipse Mars, NetBeans 8.0.2
+Here's what the config data structure looks like for each section:
 
-Version Control
+#### Basic Information
+```typescript
+name: "Your Name",
+title: "Your Job Title",
+description: "Brief site description",
+accentColor: "#1d4ed8", // Hex color for theme
+```
 
-- Git
+#### Social Links (all optional)
+```typescript
+social: {
+  email: "your-email@example.com",
+  linkedin: "https://linkedin.com/in/yourprofile",
+  twitter: "https://twitter.com/yourprofile", 
+  github: "https://github.com/yourusername",
+}
+```
 
-Web Technologies
+#### About Section
+```typescript
+aboutMe: "A paragraph describing yourself, your background, interests, and what you're passionate about. This appears in the About section of your portfolio."
+```
 
-- RESTful Web Services, HTML, CSS, Javascript, Jquery, Bootstrap, Apache, Nginx
+#### Skills
+```typescript
+skills: ["JavaScript", "React", "Node.js", "Python", "AWS", "Docker"]
+```
 
-Applications
+#### Projects
+```typescript
+projects: [
+  {
+    name: "Project Name",
+    description: "Brief description of what the project does and its impact",
+    link: "https://github.com/yourusername/project",
+    skills: ["React", "Node.js", "AWS"], // Technologies used
+  }
+]
+```
 
-- Microsoft Office, WordPress
+#### Experience
+```typescript
+experience: [
+  {
+    company: "Company Name",
+    title: "Your Job Title",
+    dateRange: "Jan 2022 - Present",
+    bullets: [
+      "Led development of microservices architecture serving 1M+ users",
+      "Reduced API response times by 40% through optimization",
+      "Mentored team of 5 junior developers",
+    ],
+  }
+]
+```
 
-Other Technologies
+#### Education
+```typescript
+education: [
+  {
+    school: "University Name",
+    degree: "Bachelor of Science in Computer Science",
+    dateRange: "2014 - 2018",
+    achievements: [
+      "Graduated Magna Cum Laude with 3.8 GPA",
+      "Dean's List all semesters",
+      "President of Computer Science Club"
+    ]
+  }
+]
+```
 
-- Adobe Photoshop CS6, AWS EC2
+### Icons
 
-Educational Qualifications
-Bachelor of Technology in Computer Science and Engineering
-Beant College of Engineering & Technology, Gurdaspur
+The template uses [Tabler Icons](https://tabler.io/icons) for all icons. If you wish to add more icons and have it look consistent with what's already there, you can browse through their extensive icon library.
 
+## Project Structure
 
-(2013 - 2017 Passout)
+```
+devportfolio/
+├── public/
+│   └── favicon.svg          # Site favicon
+├── src/
+│   ├── components/          # Astro components
+│   │   ├── About.astro      # About section
+│   │   ├── Education.astro  # Education section
+│   │   ├── Experience.astro # Work experience section
+│   │   ├── Footer.astro     # Site footer
+│   │   ├── Header.astro     # Navigation header
+│   │   ├── Hero.astro       # Hero/intro section
+│   │   └── Projects.astro   # Projects showcase
+│   ├── pages/
+│   │   └── index.astro      # Main page layout
+│   ├── styles/
+│   │   └── global.css       # Global styles
+│   └── config.ts            # Site configuration
+├── astro.config.mjs         # Astro configuration
+├── package.json             # Project dependencies
+├── tailwind.config.js       # Tailwind configuration
+└── tsconfig.json            # TypeScript configuration
+```
 
-Senior Secondary School (Non-Medical), CBSE
-RBS Inter College, Jehanabad
+## Local Development
 
+If you'd like to run it locally:
 
-(2013 Passout)
+```
+git clone https://github.com/RyanFitzgerald/devportfolio.git
+cd devportfolio
+npm install
+```
 
-High School, CBSE
-Kendriya Vidyalaya, Jehanabad
+After that, start up the Astro dev server with:
 
+```
+npm run dev
+```
 
-(2011 Passout)
+## Deployment
 
-Achievements, Awards and Extracurricular Activities
-Got Java Certification from GenCor Pvt. Ltd.
-Google AdWords and Google Analytics Certified.
-Developed a Job Portal on WordPress (Achieved Alexa India Rank- near 8k).
-Selected as a President of National level society CSI (BCET,Gurdaspur).
-Successfully Completed Training on SEO,SMM,IM from Gsstarinfotech Pvt. Ltd.
-Contact Me
-- Email: shubh.java@gmail.com
+The template can be deployed to any static hosting service easily (and in most cases, completely free). Here are some options:
 
-- Mobile: +91 86996 616342 | +91 94704 92103
+- To deploy with Netlify, [click here](https://docs.astro.build/en/guides/deploy/netlify/).
+- To deploy with Vercel, [click here](https://docs.astro.build/en/guides/deploy/vercel/).
+- To deploy with GitHub Pages, [click here](https://docs.astro.build/en/guides/deploy/github/).
+- To deploy with Cloudflare Pages, [click here](https://docs.astro.build/en/guides/deploy/cloudflare/).
+- To deploy with Render, [click here](https://docs.astro.build/en/guides/deploy/render/).
 
-- Address: Anuj PG, Nawada, Sector- 62, Noida, Uttar Pradesh ,India (PIN- 201309) View on Map
+Want to deploy somewhere else? Find more guides [here](https://docs.astro.build/en/guides/deploy/).
 
-- You can also contact me using following links:
+## Changelog
 
-       
+To view the changelog, see CHANGELOG.md.
 
-Download Resume
-Ⓒ Shubham Kumar Rohit
+## License
+
+This project is fully and completely MIT. See LICENSE.md.
+
+## Questions?
+
+Feel free to reach out on [X (Twitter)](https://x.com/rfitzio) if you have any questions or need help.
