@@ -1,10 +1,13 @@
 export const siteConfig = {
   name: "Shubham Kumar Rohit",
-  title: "Senior Software Engineer",
+  ex: " | Ex-Doubtnut (50M+ users)",
+  title: "Software Engineering Head @ Statiq",
+  subtitle: "Python | Go Lang | AWS | Microservices",
   description: "Portfolio website of Shubham Kumar Rohit",
   accentColor: "#1d4ed8",
   social: {
-    email: "progShubham@example.com",
+    phone: "+91-8699616342",
+    email: "progShubham@gmail.com",
     linkedin: "https://www.linkedin.com/in/shubhamkumarrohit/",
     twitter: "https://x.com/progShubham",
     github: "https://github.com/progshubham",
@@ -28,7 +31,7 @@ export const siteConfig = {
     skills: ["Python", "Kafka", "Redis", "AWS Lambda", "SQS", "ElasticSearch"],
   },
   {
-    name: "OCPP 1.6 EV Charging Solution",
+    name: "OCPP 1.6 EV Charging",
     description:
       "High-concurrency WebSocket-based system supporting over 48,000 concurrent EV chargers. Designed for low-latency, real-time communication between chargers and backend, ensuring transaction reliability and uptime.",
     link: "https://statiq.in",
@@ -45,16 +48,19 @@ export const siteConfig = {
   experience: [
   {
     company: "Statiq",
-    title: "Head of Software Engineering",
+    title: "Software Engineering Head",
+    url: "https://statiq.in",
     dateRange: "Oct 2022 - Present",
     bullets: [
-      "Leading backend and system architecture for India’s EV charging infrastructure, powering 48K+ chargers and 3.8L+ concurrent user sockets.",
-      "Led migration of Monolithic MobileApp service to a distributed Microservices architecture, improving scalability, fault isolation, and deployment velocity.",
+      "Leading the backend and system architecture for India’s largest EV charging ecosystem, enabling seamless operations across 48K+ chargers and 3.8L+ concurrent user sockets with high scalability and reliability.",
+      "Led backend migration of the MobileApp from a monolithic to microservices architecture using API Gateway, Traefik, and AWS Route53, resulting in 3x faster deployments and global traffic routing support.",
       "End-to-end designed and migrated Shell Single-Tenant system to Statiq Multi-Tenant architecture with zero downtime and full data integrity.",
-      "Architected and scaled core platforms like Payflow (payment orchestration) and Pigeon (notification service).",
+      "Developed the PayFlow payment microservice with smart payment routing, integrating Razorpay, Juspay, Amazon Pay, PayU and TataEV Wallet, reducing transaction processing time by 35% and increasing reliability by 20%.",
+      "Implemented ElasticSearch Hot-Warm Tiering to separate frequently accessed logs from archival data, reducing log storage costs by 80%.",
+      "Optimized RDS by tuning queries, indexing, and pooling; reduced CPU usage by 85% and improved query speed by 60%.",
       "Designed high-concurrency WebSocket systems for OCPP 1.6 and real-time user communication achieving sub-200ms latency.",
-      "Drove observability, monitoring, and reliability initiatives using AWS, Redis, Kafka, and ElasticSearch.",
-      "Mentoring engineering teams, enforcing design standards, and fostering a culture of ownership and system thinking.",
+      "Engineered Pigeon, a centralized communication microservice in Go, integrating FCM, Gupshup, Mailjet, and Exotel IVR to unify messaging workflows, increase delivery efficiency by 40%.",
+      "Applied Redis key compression using prefix-based encoding across high-throughput services, achieving 80% reduction in memory usage.",
     ],
   },
   {
@@ -62,20 +68,22 @@ export const siteConfig = {
     title: "Software Development Engineer II",
     dateRange: "Jan 2021 - Oct 2022",
     bullets: [
-      "Built real-time group learning and collaboration system (StudyGroup) using Node.js, Socket.io, and Redis.",
-      "Implemented scalable backend services supporting millions of concurrent students.",
-      "Improved reliability, fault tolerance, and cost optimization through async task queues and caching layers.",
+      "Built the DN-Shorts (Video Reels) feature with a real-time, session-aware recommendation algorithm, increasing in-app engagement time by 13%; feature scaled to support 2.5–3 million DAUs.",
+      "Designed and implemented a wallet system from scratch, integrating 3rd-party reward providers (Paytm, Myntra, Amazon, Zomato, etc.) for seamless voucher redemption and user incentives.",
+      "Developed the Study Group feature enabling real-time peer-to-peer doubt resolution with group creation, admin privileges, and moderation tools; system handled 8–10 million daily messages with high reliability.",
+      "Optimized API performance and database queries across multiple services, resulting in 35% reduction in response time and improved overall system throughput under high load."
     ],
   },
   {
-    company: "Coolwinks Technologies Pvt. Ltd.",
+    company: "Coolwinks",
     title: "Senior Software Developer",
     dateRange: "Jan 2018 - Jan 2021",
     bullets: [
-      "Developed and optimized scalable backend REST APIs for Coolwinks e-commerce app (Android & iOS).",
-      "Integrated multiple payment gateways with smart refund and wallet systems.",
-      "Designed AI-driven lens recommendation system improving personalization and conversion rates.",
-      "Enhanced platform SEO and analytics automation; awarded 'Star Employee' for outstanding contributions.",
+      "Developed scalable backend systems from scratch for Coolwinks Android & iOS apps, supporting over 1 million+ users with an uptime of 99.9%.",
+      "Integrated 4 payment gateways and digital wallets, enabling 100K+ monthly transactions with an auto-refund feature that reduced refund TAT by 70%.",
+      "Designed an AI-powered “Cool Lenses” recommendation engine that increased lens conversion rate by 15% through personalized suggestions.",
+      "Built and maintained a custom CRM dashboard used by 50+ support agents, integrating IVR and AI chatbot support to handle 20K+ monthly queries.",
+      "Implemented a high-performance PWA for Coolwinks.com, improving load times by 40% and enabling seamless in-app shopping via PhonePe."
     ],
   },
   {
@@ -102,6 +110,7 @@ export const siteConfig = {
   {
     school: "Punjab Technical University",
     degree: "Bachelor of Technology (B.Tech.) in Computer Science Engineering",
+    link: "https://www.sbssugsp.ac.in",
     dateRange: "2013 - 2017",
     achievements: [
       "Graduated with specialization in Computer Science and Engineering.",
@@ -111,7 +120,8 @@ export const siteConfig = {
   },
   {
     school: "Kendriya Vidyalaya, Patna",
-    degree: "10+2 (Physics, Chemistry, Mathematics)",
+    degree: "Senior Secondary (10+2)",
+    link: "https://no1patna.kvs.ac.in",
     dateRange: "2011 - 2013",
     achievements: [
       "Excelled in core science subjects with strong analytical and problem-solving foundation.",
@@ -121,7 +131,8 @@ export const siteConfig = {
   },
   {
     school: "Kendriya Vidyalaya, Jehanabad",
-    degree: "Matriculation",
+    degree: "Secondary (10th)",
+    link: "https://ainwan.kvs.ac.in",
     dateRange: "2002 - 2011",
     achievements: [
       "Scout & Guide Captain and active participant in academic and leadership activities.",
@@ -129,4 +140,21 @@ export const siteConfig = {
     ],
   },
 ],
+contributions: [
+  {
+    year: "2023",
+    image: "/images/github/github-2023.png",
+    link: "https://github.com/progshubham?tab=overview&from=2023-12-01&to=2023-12-31",
+  },
+  {
+    year: "2024",
+    image: "/images/github/github-2024.png",
+    link: "https://github.com/progshubham?tab=overview&from=2024-12-01&to=2024-12-31",
+  },
+  {
+    year: "2025",
+    image: "/images/github/github-2025.png",
+    link: "https://github.com/progshubham?tab=overview&from=2025-10-01&to=2025-10-12",
+  },
+]
 };

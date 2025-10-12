@@ -31,7 +31,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
                         class="text-base sm:text-lg"
                         style={`color: ${siteConfig.accentColor}`}
                       >
-                        {edu.school}
+                       <a href={edu.link} target="_blank">{edu.school}</a>
                       </p>
                     </div>
                     <span class="text-xs sm:text-sm text-gray-500 mt-2 sm:mt-0">

@@ -7,7 +7,9 @@ import { siteConfig } from "../config";
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
       <!-- Left Side -->
       <div class="lg:col-span-4">
-        <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900">
+        <h2
+          class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900"
+        >
           Contact Me
         </h2>
         <div
@@ -19,12 +21,15 @@ import { siteConfig } from "../config";
       <!-- Right Side (Form) -->
       <div class="lg:col-span-8">
         <form
+          id="contactForm"
           action="https://formspree.io/f/xvgwwjzd"
           method="POST"
           class="space-y-6 bg-gray-50 p-6 rounded-2xl shadow-md"
         >
           <div>
-            <label class="block text-gray-700 font-medium mb-1">Your Name</label>
+            <label for="name" class="block text-gray-700 font-medium mb-1">
+              Your Name
+            </label>
             <input
               type="text"
               name="name"
@@ -34,7 +39,9 @@ import { siteConfig } from "../config";
           </div>
 
           <div>
-            <label class="block text-gray-700 font-medium mb-1">Your Email</label>
+            <label for="email" class="block text-gray-700 font-medium mb-1">
+              Your Email
+            </label>
             <input
               type="email"
               name="email"
@@ -44,7 +51,9 @@ import { siteConfig } from "../config";
           </div>
 
           <div>
-            <label class="block text-gray-700 font-medium mb-1">Your Phone</label>
+            <label for="phone" class="block text-gray-700 font-medium mb-1">
+              Your Phone
+            </label>
             <input
               type="text"
               name="phone"
@@ -53,7 +62,9 @@ import { siteConfig } from "../config";
           </div>
 
           <div>
-            <label class="block text-gray-700 font-medium mb-1">Your Message</label>
+            <label for="message" class="block text-gray-700 font-medium mb-1">
+              Your Message
+            </label>
             <textarea
               name="message"
               required
@@ -62,9 +73,12 @@ import { siteConfig } from "../config";
             ></textarea>
           </div>
 
+          <!-- Hidden IP field -->
+          <input type="hidden" name="client_ip" id="client_ip" value="" />
+
           <button
             type="submit"
-            class="px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-lg sm:text-lg font-medium transition-all duration-300 group-hover:bg-gray-800"
+            class="px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-lg sm:text-lg font-medium transition-all duration-300 hover:bg-gray-800"
           >
             Send Message
           </button>
@@ -73,3 +87,17 @@ import { siteConfig } from "../config";
     </div>
   </div>
 </section>
+
+<!-- ✅ Run in browser (client-side only) -->
+<script is:inline>
+  window.addEventListener("DOMContentLoaded", async () => {
+    try {
+      const res = await fetch("https://api.ipify.org?format=json");
+      const data = await res.json();
+      document.querySelector("#client_ip").value = data.ip;
+    } catch (err) {
+      console.warn("Failed to fetch client IP:", err);
+      document.querySelector("#client_ip").value = "Unavailable";
+    }
+  });
+</script>

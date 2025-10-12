@@ -18,6 +18,9 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
         <p class="text-base text-gray-600">
           {siteConfig.title}
         </p>
+        <p class="text-base text-gray-600">
+          {siteConfig.social.phone} | {siteConfig.social.email}
+        </p>
         <div class="flex gap-x-6">
           <a
             href={`mailto:${siteConfig.social.email}`}
@@ -129,22 +132,22 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
             >About</a
           >
           {
-            hasProjects && (
-              <a
-                href="#projects"
-                class="text-sm text-gray-600 hover:text-gray-800 transition-colors"
-              >
-                Projects
-              </a>
-            )
-          }
-          {
             hasExperience && (
               <a
                 href="#experience"
                 class="text-sm text-gray-600 hover:text-gray-800 transition-colors"
               >
                 Experience
+              </a>
+            )
+          }
+          {
+            hasProjects && (
+              <a
+                href="#projects"
+                class="text-sm text-gray-600 hover:text-gray-800 transition-colors"
+              >
+                Projects
               </a>
             )
           }
@@ -158,6 +161,11 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
               </a>
             )
           }
+          <a
+            href="#contact"
+            class="text-sm text-gray-600 hover:text-gray-800 transition-colors"
+            >Contact</a
+          >
         </nav>
         <p class="text-sm text-gray-500">
           © {new Date().getFullYear()}
