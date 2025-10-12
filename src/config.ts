@@ -12,6 +12,13 @@ export const siteConfig = {
     twitter: "https://x.com/progShubham",
     github: "https://github.com/progshubham",
   },
+  seo: {
+    description: "Shubham Kumar Rohit - Software Engineering Head at Statiq | Ex-Doubtnut (50M+ users). Experienced in Python, Go, AWS, Microservices, and building scalable backend systems.",
+    keywords: "Shubham Kumar Rohit, progShubham, Software Engineer, System Architect, Python, Go Lang, AWS, Microservices, Statiq, Doubtnut, EV Charging, WebSocket, Backend Developer, Full Stack Developer, High Concurrency Systems",
+    url: "https://progshubham.github.io",
+    image: "https://scontent.fpat2-3.fna.fbcdn.net/v/t39.30808-6/332200300_743028780589871_5594315556749415248_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=OAyoGgIL3wUQ7kNvwGWNtQm&_nc_oc=AdlToMgBP7ua8edJq6ufWL95AeyAqHlxcS7Pr8FcDgwLWNDV8d8pk-aL53Wy7EPHNSoURv3oF0CDvxElbFHq3XLj&_nc_zt=23&_nc_ht=scontent.fpat2-3.fna&_nc_gid=bY8XXIEQ2CqbJNP5bByPzQ&oh=00_AfcXz3DbJ8lNeq7gfLHk-H1gWTxXdbKvjkiyaJ0-V4HW5g&oe=68F18C29",
+    twitterHandle: "@progShubham",
+  },
   aboutMe: ["I’m a software engineer and system architect with 8+ YOE passionate about building systems that scale seamlessly and solve real-world problems. I enjoy designing high-performance, reliable, and maintainable architectures, whether it’s powering real-time user communication, large-scale payment systems, or distributed cloud platforms.",
     "Over the years, I’ve led backend and system design for India’s largest EV charging ecosystem at Statiq, built consumer-facing platforms serving 50M+ users at Doubtnut, and developed scalable services for millions of daily interactions at Coolwinks.",
     "Beyond technology, I focus on team mentorship, clean engineering practices, and fostering collaboration, believing that great software comes from both robust systems and empowered teams."

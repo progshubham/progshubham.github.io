@@ -26,6 +26,58 @@ import "../styles/global.css";
       rel="stylesheet"
     />
     <title>{siteConfig.name} - {siteConfig.title}</title>
+      <meta name="description" content={siteConfig.seo.description}>
+  <meta name="keywords" content={siteConfig.seo.keywords}>
+  <meta name="author" content={siteConfig.name}>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content={siteConfig.name}>
+  <meta property="og:description" content={siteConfig.seo.description}>
+  <meta property="og:url" content={siteConfig.seo.url}>
+  <meta property="og:image" content={siteConfig.seo.image}>
+  <meta property="og:site_name" content={siteConfig.name}>
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={siteConfig.name}>
+  <meta name="twitter:description" content={siteConfig.seo.description}>
+  <meta name="twitter:image" content={siteConfig.seo.image}>
+  <meta name="twitter:site" content={siteConfig.seo.twitterHandle}>
+  <meta name="twitter:creator" content={siteConfig.seo.twitterHandle}>
+
+
+  <!-- Structured Data JSON-LD for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Shubham Kumar Rohit",
+    "url": "https://your-portfolio-url.com",
+    "sameAs": [
+      "https://github.com/progshubham",
+      "https://linkedin.com/in/shubham-kumar-rohit",
+      "https://twitter.com/progShubham"
+    ],
+    "jobTitle": "Software Engineering Head",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Statiq",
+      "url": "https://statiq.in"
+    },
+    "alumniOf": [
+      {
+        "@type": "EducationalOrganization",
+        "name": "Punjab Technical University"
+      },
+      {
+        "@type": "EducationalOrganization",
+        "name": "Kendriya Vidyalaya, Patna"
+      }
+    ],
+    "knowsAbout": "Python, Go Lang, AWS, Microservices, ElasticSearch, Redis, MySQL, WebSocket, High Concurrency Systems"
+  }
+  </script>
   </head>
   <body>
     <Header />
