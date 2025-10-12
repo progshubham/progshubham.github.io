@@ -12,8 +12,10 @@ export const siteConfig = {
     twitter: "https://x.com/progShubham",
     github: "https://github.com/progshubham",
   },
-  aboutMe:
-    "I’m Shubham Kumar, a Software Lead with 8+ years of experience in designing and scaling distributed, microservice-based systems. At Statiq, I lead backend architecture for India’s EV charging infrastructure, focusing on high-concurrency systems, WebSockets, and event-driven communication. \n My expertise spans GoLang, Python, AWS, Redis, Kafka, and ElasticSearch, with a strong emphasis on system design, performance optimization, and reliability engineering. I enjoy building scalable architectures that enable real-time data flow and seamless user experiences.",
+  aboutMe: ["I’m a software engineer and system architect with 8+ YOE passionate about building systems that scale seamlessly and solve real-world problems. I enjoy designing high-performance, reliable, and maintainable architectures, whether it’s powering real-time user communication, large-scale payment systems, or distributed cloud platforms.",
+    "Over the years, I’ve led backend and system design for India’s largest EV charging ecosystem at Statiq, built consumer-facing platforms serving 50M+ users at Doubtnut, and developed scalable services for millions of daily interactions at Coolwinks.",
+    "Beyond technology, I focus on team mentorship, clean engineering practices, and fostering collaboration, believing that great software comes from both robust systems and empowered teams."
+  ],
   skills: ["Python", "Go Lang", "AWS", "ElasticSearch", "Redis", "MySQL"],
   projects: [
   {
