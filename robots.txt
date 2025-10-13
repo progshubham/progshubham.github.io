@@ -1,0 +1,17 @@
+# robots.txt for GitHub Pages Portfolio
+# Allow all search engines to crawl the main content
+
+User-agent: *
+Allow: /
+
+# Disallow common non-content directories
+Disallow: /assets/
+Disallow: /images/
+Disallow: /scripts/
+Disallow: /styles/
+Disallow: /node_modules/
+Disallow: /dist/
+Disallow: /build/
+
+# Sitemap location (optional, recommended)
+Sitemap: https://progshubham.github.io/sitemap.xml
