@@ -13,7 +13,7 @@ export const siteConfig = {
     github: "https://github.com/progshubham",
   },
   seo: {
-    description: "Shubham Kumar Rohit - Software Engineering Head at Statiq | Ex-Doubtnut (50M+ users). Experienced in Python, Go, AWS, Microservices, and building scalable backend systems.",
+    description: "Shubham Kumar Rohit - Software Engineering Head at Statiq | Ex-Doubtnut (50M+ users). Experienced in Python, Go, AWS, Microservices & building scalable backend.",
     keywords: "Shubham Kumar Rohit, progShubham, Software Engineer, System Architect, Python, Go Lang, AWS, Microservices, Statiq, Doubtnut, EV Charging, WebSocket, Backend Developer, Full Stack Developer, High Concurrency Systems",
     url: "https://progshubham.github.io",
     image: "https://scontent.fpat2-3.fna.fbcdn.net/v/t39.30808-6/332200300_743028780589871_5594315556749415248_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=OAyoGgIL3wUQ7kNvwGWNtQm&_nc_oc=AdlToMgBP7ua8edJq6ufWL95AeyAqHlxcS7Pr8FcDgwLWNDV8d8pk-aL53Wy7EPHNSoURv3oF0CDvxElbFHq3XLj&_nc_zt=23&_nc_ht=scontent.fpat2-3.fna&_nc_gid=bY8XXIEQ2CqbJNP5bByPzQ&oh=00_AfcXz3DbJ8lNeq7gfLHk-H1gWTxXdbKvjkiyaJ0-V4HW5g&oe=68F18C29",
