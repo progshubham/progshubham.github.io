@@ -75,7 +75,8 @@ function getMonthLabelRow(weeks: CalendarDay[][]): string[] {
 }
 
 const currentYear = new Date().getFullYear();
-const years = [currentYear - 2, currentYear - 1, currentYear];
+const START_YEAR = 2023;
+const years = Array.from({ length: currentYear - START_YEAR + 1 }, (_, i) => START_YEAR + i);
 
 const calendarData = await Promise.all(
   years.map(async (year) => {
@@ -88,7 +89,11 @@ const calendarData = await Promise.all(
 );
 ---
 
-<section id="github" class="p-8 sm:p-12 md:p-16 lg:p-24 bg-gray-50">
+<section
+  id="github"
+  aria-label="GitHub Contributions by Shubham Kumar Rohit"
+  class="p-8 sm:p-12 md:p-16 lg:p-24 bg-gray-50"
+>
   <div>
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
       <div class="lg:col-span-4">
@@ -99,27 +104,37 @@ const calendarData = await Promise.all(
           class="w-[75px] h-[5px] mt-2 rounded-full"
           style={`background-color: ${siteConfig.accentColor}`}
         ></div>
+        <p class="mt-4 text-gray-600 text-sm leading-relaxed">
+          Year-by-year view of my open-source and private code activity on
+          GitHub — commits, pull requests, reviews, and issue contributions.
+        </p>
       </div>
 
       <div class="lg:col-span-8 space-y-10">
         {calendarData.map(({ year, weeks, monthLabels, total }) => (
           <div class="bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all">
-            <div class="flex items-center justify-between mb-4">
-              <h3 class="text-2xl sm:text-3xl font-semibold text-gray-800">{year}</h3>
+            <div class="mb-4">
               <a
                 href={`https://github.com/${username}?tab=overview&from=${year}-01-01&to=${year}-12-31`}
                 target="_blank"
-                rel="noreferrer"
-                class="text-sm text-gray-500 hover:underline"
+                rel="noopener noreferrer"
+                aria-label={`View ${siteConfig.name}'s GitHub contributions for ${year}`}
+                class="text-2xl sm:text-3xl font-semibold text-gray-800 hover:underline"
               >
-                {total.toLocaleString()} contributions →
+                {year}
+                {/* visually hidden total for screen readers & crawlers */}
+                <span class="sr-only"> — {total.toLocaleString()} contributions</span>
               </a>
             </div>
 
-            <div class="overflow-x-auto">
+            <div
+              class="overflow-x-auto"
+              role="img"
+              aria-label={`GitHub contribution heatmap for ${year}: ${total.toLocaleString()} total contributions by ${siteConfig.name}`}
+            >
               <div style="display: inline-flex; flex-direction: column; gap: 2px; min-width: max-content;">
                 {/* Month labels row */}
-                <div style="display: flex; gap: 2px; padding-left: 26px;">
+                <div style="display: flex; gap: 2px; padding-left: 26px;" aria-hidden="true">
                   {monthLabels.map((label) => (
                     <div style="width: 11px; font-size: 10px; color: #6b7280; overflow: visible; white-space: nowrap; line-height: 1.2;">
                       {label}
@@ -130,7 +145,7 @@ const calendarData = await Promise.all(
                 {/* Grid: day labels + week columns */}
                 <div style="display: flex; gap: 2px;">
                   {/* Day labels */}
-                  <div style="display: flex; flex-direction: column; gap: 2px; margin-right: 4px;">
+                  <div style="display: flex; flex-direction: column; gap: 2px; margin-right: 4px;" aria-hidden="true">
                     {DAY_LABELS.map((label) => (
                       <div style="width: 22px; height: 11px; font-size: 9px; color: #6b7280; display: flex; align-items: center;">
                         {label}
@@ -160,7 +175,10 @@ const calendarData = await Promise.all(
             </div>
 
             {/* Legend */}
-            <div style="display: flex; align-items: center; justify-content: flex-end; margin-top: 8px; gap: 4px; font-size: 11px; color: #6b7280;">
+            <div
+              style="display: flex; align-items: center; justify-content: flex-end; margin-top: 8px; gap: 4px; font-size: 11px; color: #6b7280;"
+              aria-hidden="true"
+            >
               <span>Less</span>
               {LEVEL_COLORS.map((color) => (
                 <div style={`width: 11px; height: 11px; border-radius: 2px; background-color: ${color};`} />
