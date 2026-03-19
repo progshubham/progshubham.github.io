@@ -149,21 +149,4 @@ export const siteConfig = {
     ],
   },
 ],
-contributions: [
-  {
-    year: "2023",
-    image: "/images/github/github-2023.png",
-    link: "https://github.com/progshubham?tab=overview&from=2023-12-01&to=2023-12-31",
-  },
-  {
-    year: "2024",
-    image: "/images/github/github-2024.png",
-    link: "https://github.com/progshubham?tab=overview&from=2024-12-01&to=2024-12-31",
-  },
-  {
-    year: "2025",
-    image: "/images/github/github-2025.png",
-    link: "https://github.com/progshubham?tab=overview&from=2025-10-01&to=2025-10-12",
-  },
-]
 };
