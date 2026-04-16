@@ -2,91 +2,7 @@
 import { siteConfig } from "../config";
 
 const username = siteConfig.social.github.split("/").pop() ?? "progshubham";
-
-const LEVEL_COLORS = ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"];
-const MONTH_NAMES = [
-  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
-];
-// GitHub graph: Sun=row0, Mon=row1, ..., Sat=row6 — only label Mon/Wed/Fri
-const DAY_LABELS = ["", "Mon", "", "Wed", "", "Fri", ""];
-
-type Contribution = { date: string; count: number; level: number };
-type CalendarDay = { date: string; level: number; count: number; inYear: boolean };
-
-async function fetchContributions(year: number): Promise<Contribution[]> {
-  try {
-    const res = await fetch(
-      `https://github-contributions-api.jogruber.de/v4/${username}?y=${year}`
-    );
-    if (!res.ok) return [];
-    const data = await res.json();
-    return (data.contributions ?? []) as Contribution[];
-  } catch {
-    return [];
-  }
-}
-
-function buildCalendar(year: number, contributions: Contribution[]): CalendarDay[][] {
-  const dateMap = new Map(contributions.map((c) => [c.date, c]));
-
-  // Start from the Sunday on or before Jan 1
-  let current = new Date(Date.UTC(year, 0, 1));
-  current = new Date(current.getTime() - current.getUTCDay() * 86400000);
-
-  const end = new Date(Date.UTC(year, 11, 31));
-  const weeks: CalendarDay[][] = [];
-
-  while (current <= end) {
-    const week: CalendarDay[] = [];
-    for (let d = 0; d < 7; d++) {
-      const dateStr = current.toISOString().split("T")[0];
-      const inYear = current.getUTCFullYear() === year;
-      const contrib = dateMap.get(dateStr);
-      week.push({
-        date: dateStr,
-        level: inYear ? (contrib?.level ?? 0) : -1,
-        count: inYear ? (contrib?.count ?? 0) : 0,
-        inYear,
-      });
-      current = new Date(current.getTime() + 86400000);
-    }
-    weeks.push(week);
-  }
-  return weeks;
-}
-
-function getMonthLabelRow(weeks: CalendarDay[][]): string[] {
-  const labels: string[] = new Array(weeks.length).fill("");
-  let lastMonth = -1;
-  weeks.forEach((week, i) => {
-    for (const day of week) {
-      if (day.inYear) {
-        const month = new Date(day.date + "T00:00:00Z").getUTCMonth();
-        if (month !== lastMonth) {
-          labels[i] = MONTH_NAMES[month];
-          lastMonth = month;
-        }
-        break;
-      }
-    }
-  });
-  return labels;
-}
-
-const currentYear = new Date().getFullYear();
 const START_YEAR = 2023;
-const years = Array.from({ length: currentYear - START_YEAR + 1 }, (_, i) => START_YEAR + i);
-
-const calendarData = await Promise.all(
-  years.map(async (year) => {
-    const contributions = await fetchContributions(year);
-    const weeks = buildCalendar(year, contributions);
-    const monthLabels = getMonthLabelRow(weeks);
-    const total = contributions.reduce((s, c) => s + c.count, 0);
-    return { year, weeks, monthLabels, total };
-  })
-);
 ---
 
 <section
@@ -110,84 +26,190 @@ const calendarData = await Promise.all(
         </p>
       </div>
 
-      <div class="lg:col-span-8 space-y-10">
-        {calendarData.map(({ year, weeks, monthLabels, total }) => (
-          <div class="bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all">
-            <div class="mb-4">
-              <a
-                href={`https://github.com/${username}?tab=overview&from=${year}-01-01&to=${year}-12-31`}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`View ${siteConfig.name}'s GitHub contributions for ${year}`}
-                class="text-2xl sm:text-3xl font-semibold text-gray-800 hover:underline"
-              >
-                {year}
-                {/* visually hidden total for screen readers & crawlers */}
-                <span class="sr-only"> — {total.toLocaleString()} contributions</span>
-              </a>
-            </div>
-
-            <div
-              class="overflow-x-auto"
-              role="img"
-              aria-label={`GitHub contribution heatmap for ${year}: ${total.toLocaleString()} total contributions by ${siteConfig.name}`}
-            >
-              <div style="display: inline-flex; flex-direction: column; gap: 2px; min-width: max-content;">
-                {/* Month labels row */}
-                <div style="display: flex; gap: 2px; padding-left: 26px;" aria-hidden="true">
-                  {monthLabels.map((label) => (
-                    <div style="width: 11px; font-size: 10px; color: #6b7280; overflow: visible; white-space: nowrap; line-height: 1.2;">
-                      {label}
-                    </div>
-                  ))}
-                </div>
-
-                {/* Grid: day labels + week columns */}
-                <div style="display: flex; gap: 2px;">
-                  {/* Day labels */}
-                  <div style="display: flex; flex-direction: column; gap: 2px; margin-right: 4px;" aria-hidden="true">
-                    {DAY_LABELS.map((label) => (
-                      <div style="width: 22px; height: 11px; font-size: 9px; color: #6b7280; display: flex; align-items: center;">
-                        {label}
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Week columns */}
-                  {weeks.map((week) => (
-                    <div style="display: flex; flex-direction: column; gap: 2px;">
-                      {week.map((day) => (
-                        <div
-                          style={`width: 11px; height: 11px; border-radius: 2px; background-color: ${
-                            day.level < 0 ? "transparent" : LEVEL_COLORS[day.level]
-                          };`}
-                          title={
-                            day.inYear
-                              ? `${day.date}: ${day.count} contribution${day.count !== 1 ? "s" : ""}`
-                              : undefined
-                          }
-                        />
-                      ))}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Legend */}
-            <div
-              style="display: flex; align-items: center; justify-content: flex-end; margin-top: 8px; gap: 4px; font-size: 11px; color: #6b7280;"
-              aria-hidden="true"
-            >
-              <span>Less</span>
-              {LEVEL_COLORS.map((color) => (
-                <div style={`width: 11px; height: 11px; border-radius: 2px; background-color: ${color};`} />
-              ))}
-              <span>More</span>
-            </div>
-          </div>
-        ))}
+      <div id="github-graphs" class="lg:col-span-8 space-y-10">
+        <!-- Loading skeleton -->
+        <div class="flex items-center justify-center py-16 text-gray-400">
+          Loading contributions…
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<script is:inline define:vars={{ username, START_YEAR, name: siteConfig.name }}>
+  const LEVEL_COLORS = ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"];
+  const MONTH_NAMES = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const DAY_LABELS = ["", "Mon", "", "Wed", "", "Fri", ""];
+
+  async function fetchContributions(year) {
+    try {
+      const res = await fetch(
+        `https://github-contributions-api.jogruber.de/v4/${username}?y=${year}`
+      );
+      if (!res.ok) return [];
+      const data = await res.json();
+      return data.contributions ?? [];
+    } catch {
+      return [];
+    }
+  }
+
+  function buildCalendar(year, contributions) {
+    const dateMap = new Map(contributions.map((c) => [c.date, c]));
+    let current = new Date(Date.UTC(year, 0, 1));
+    current = new Date(current.getTime() - current.getUTCDay() * 86400000);
+    const end = new Date(Date.UTC(year, 11, 31));
+    const weeks = [];
+
+    while (current <= end) {
+      const week = [];
+      for (let d = 0; d < 7; d++) {
+        const dateStr = current.toISOString().split("T")[0];
+        const inYear = current.getUTCFullYear() === year;
+        const contrib = dateMap.get(dateStr);
+        week.push({
+          date: dateStr,
+          level: inYear ? (contrib?.level ?? 0) : -1,
+          count: inYear ? (contrib?.count ?? 0) : 0,
+          inYear,
+        });
+        current = new Date(current.getTime() + 86400000);
+      }
+      weeks.push(week);
+    }
+    return weeks;
+  }
+
+  function getMonthLabels(weeks) {
+    const labels = new Array(weeks.length).fill("");
+    let lastMonth = -1;
+    weeks.forEach((week, i) => {
+      for (const day of week) {
+        if (day.inYear) {
+          const month = new Date(day.date + "T00:00:00Z").getUTCMonth();
+          if (month !== lastMonth) {
+            labels[i] = MONTH_NAMES[month];
+            lastMonth = month;
+          }
+          break;
+        }
+      }
+    });
+    return labels;
+  }
+
+  function renderYear(year, weeks, monthLabels) {
+    const card = document.createElement("div");
+    card.className = "bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all";
+
+    // Year heading
+    const heading = document.createElement("div");
+    heading.className = "mb-4";
+    const link = document.createElement("a");
+    link.href = `https://github.com/${username}?tab=overview&from=${year}-01-01&to=${year}-12-31`;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.className = "text-2xl sm:text-3xl font-semibold text-gray-800 hover:underline";
+    link.textContent = year;
+    heading.appendChild(link);
+    card.appendChild(heading);
+
+    // Heatmap container
+    const scrollWrap = document.createElement("div");
+    scrollWrap.className = "overflow-x-auto";
+
+    const grid = document.createElement("div");
+    grid.style.cssText = "display: inline-flex; flex-direction: column; gap: 2px; min-width: max-content;";
+
+    // Month labels row
+    const monthRow = document.createElement("div");
+    monthRow.style.cssText = "display: flex; gap: 2px; padding-left: 26px;";
+    monthLabels.forEach((label) => {
+      const m = document.createElement("div");
+      m.style.cssText = "width: 11px; font-size: 10px; color: #6b7280; overflow: visible; white-space: nowrap; line-height: 1.2;";
+      m.textContent = label;
+      monthRow.appendChild(m);
+    });
+    grid.appendChild(monthRow);
+
+    // Grid: day labels + week columns
+    const body = document.createElement("div");
+    body.style.cssText = "display: flex; gap: 2px;";
+
+    // Day labels column
+    const dayCol = document.createElement("div");
+    dayCol.style.cssText = "display: flex; flex-direction: column; gap: 2px; margin-right: 4px;";
+    DAY_LABELS.forEach((label) => {
+      const d = document.createElement("div");
+      d.style.cssText = "width: 22px; height: 11px; font-size: 9px; color: #6b7280; display: flex; align-items: center;";
+      d.textContent = label;
+      dayCol.appendChild(d);
+    });
+    body.appendChild(dayCol);
+
+    // Week columns
+    weeks.forEach((week) => {
+      const col = document.createElement("div");
+      col.style.cssText = "display: flex; flex-direction: column; gap: 2px;";
+      week.forEach((day) => {
+        const cell = document.createElement("div");
+        const bg = day.level < 0 ? "transparent" : LEVEL_COLORS[day.level];
+        cell.style.cssText = `width: 11px; height: 11px; border-radius: 2px; background-color: ${bg};`;
+        if (day.inYear) {
+          cell.title = `${day.date}: ${day.count} contribution${day.count !== 1 ? "s" : ""}`;
+        }
+        col.appendChild(cell);
+      });
+      body.appendChild(col);
+    });
+
+    grid.appendChild(body);
+    scrollWrap.appendChild(grid);
+    card.appendChild(scrollWrap);
+
+    // Legend
+    const legend = document.createElement("div");
+    legend.style.cssText = "display: flex; align-items: center; justify-content: flex-end; margin-top: 8px; gap: 4px; font-size: 11px; color: #6b7280;";
+    const lessSpan = document.createElement("span");
+    lessSpan.textContent = "Less";
+    legend.appendChild(lessSpan);
+    LEVEL_COLORS.forEach((color) => {
+      const box = document.createElement("div");
+      box.style.cssText = `width: 11px; height: 11px; border-radius: 2px; background-color: ${color};`;
+      legend.appendChild(box);
+    });
+    const moreSpan = document.createElement("span");
+    moreSpan.textContent = "More";
+    legend.appendChild(moreSpan);
+    card.appendChild(legend);
+
+    return card;
+  }
+
+  async function init() {
+    const container = document.getElementById("github-graphs");
+    if (!container) return;
+
+    const currentYear = new Date().getFullYear();
+    const years = Array.from(
+      { length: currentYear - START_YEAR + 1 },
+      (_, i) => START_YEAR + i
+    );
+
+    const results = await Promise.all(
+      years.map(async (year) => {
+        const contributions = await fetchContributions(year);
+        const weeks = buildCalendar(year, contributions);
+        const monthLabels = getMonthLabels(weeks);
+        return { year, weeks, monthLabels };
+      })
+    );
+
+    container.innerHTML = "";
+    results.forEach(({ year, weeks, monthLabels }) => {
+      container.appendChild(renderYear(year, weeks, monthLabels));
+    });
+  }
+
+  init();
+</script>
