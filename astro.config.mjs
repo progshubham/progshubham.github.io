@@ -8,4 +8,9 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   site: 'https://progshubham.github.io',
+  build: {
+    // Inline all CSS into the HTML — removes a render-blocking request,
+    // which matters most on high-latency (2G/3G) connections
+    inlineStylesheets: "always",
+  },
 });

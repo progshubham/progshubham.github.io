@@ -176,18 +176,9 @@ import { siteConfig } from "../config";
 
 <!-- ✅ Run in browser (client-side only) -->
 <script is:inline>
-  window.addEventListener("DOMContentLoaded", async () => {
-    try {
-      const res = await fetch("https://api.ipify.org?format=json");
-      const data = await res.json();
-      document.querySelector("#client_ip").value = data.ip;
-    } catch (err) {
-      console.warn("Failed to fetch client IP:", err);
-      document.querySelector("#client_ip").value = "Unavailable";
-    }
-  });
-
-  // Submit via fetch so visitors stay on the page and get inline feedback
+  // Submit via fetch so visitors stay on the page and get inline feedback.
+  // The IP lookup happens here, at submit time, instead of on page load —
+  // visitors who never use the form never pay for the third-party request.
   const form = document.getElementById("contactForm");
   form?.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -195,6 +186,15 @@ import { siteConfig } from "../config";
     const status = document.getElementById("form-status");
     btn.disabled = true;
     btn.textContent = "Sending…";
+    try {
+      const ipRes = await fetch("https://api.ipify.org?format=json", {
+        signal: AbortSignal.timeout(3000),
+      });
+      const ipData = await ipRes.json();
+      document.querySelector("#client_ip").value = ipData.ip;
+    } catch {
+      document.querySelector("#client_ip").value = "Unavailable";
+    }
     try {
       const res = await fetch(form.action, {
         method: "POST",
