@@ -122,31 +122,31 @@ import { siteConfig } from "../config";
       stroke-width={0}></rect>
   </svg>
   <div
-    class="max-w-7xl mx-auto p-8 sm:p-12 md:px-16 lg:px-24 md:min-h-screen md:py-24 md:pb-40 flex items-center"
+    class="max-w-7xl mx-auto p-8 sm:p-12 md:px-16 lg:px-24 md:min-h-screen md:py-20 md:pb-32 flex items-center"
   >
     <div>
       <h2
-        class="text-pretty text-xl sm:text-2xl md:text-5xl font-bold tracking-tight text-gray-700 dark:text-gray-300 animate-fade-in"
+        class="text-pretty text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-gray-700 dark:text-gray-300 animate-fade-in"
       >
         Hello! 👋
       </h2>
       <h1
-        class="mt-6 sm:mt-8 md:mt-10 text-pretty text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold tracking-tight text-gray-800 dark:text-gray-100 animate-fade-in animation-delay-200"
+        class="mt-4 sm:mt-5 md:mt-6 text-pretty text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-800 dark:text-gray-100 animate-fade-in animation-delay-200"
       >
         I'm <span style="color: var(--accent)">{siteConfig.name}</span>
       </h1>
       <p
-        class="mt-4 sm:mt-6 md:mt-8 text-pretty text-base sm:text-lg md:text-xl/8 font-medium text-gray-600 dark:text-gray-400 animate-fade-in animation-delay-400"
+        class="mt-4 sm:mt-5 md:mt-6 text-pretty text-base sm:text-lg md:text-xl/8 font-medium text-gray-600 dark:text-gray-400 animate-fade-in animation-delay-400"
       >
         {siteConfig.title} {siteConfig.ex}
       </p>
       <p
-        class="mt-2 sm:mt-4 md:mt-6 text-pretty text-base sm:text-lg md:text-xl/8 font-normal text-gray-600 dark:text-gray-400 animate-fade-in animation-delay-400">
+        class="mt-2 md:mt-3 text-pretty text-base sm:text-lg md:text-xl/8 font-normal text-gray-600 dark:text-gray-400 animate-fade-in animation-delay-400">
         {siteConfig.subtitle}
       </p>
 
       <div
-        class="mt-8 sm:mt-10 flex flex-wrap gap-3 sm:gap-4 animate-fade-in animation-delay-600"
+        class="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4 animate-fade-in animation-delay-600"
       >
         <a
           href="#projects"
@@ -165,12 +165,12 @@ import { siteConfig } from "../config";
 
       {
         siteConfig.stats && siteConfig.stats.length > 0 && (
-          <dl class="mt-10 sm:mt-14 flex flex-wrap gap-x-10 gap-y-6 animate-fade-in animation-delay-600">
+          <dl class="mt-8 sm:mt-10 flex flex-wrap gap-x-10 gap-y-6 animate-fade-in animation-delay-600">
             {siteConfig.stats.map((stat) => (
               <div>
                 <dt class="sr-only">{stat.label}</dt>
                 <dd
-                  class="font-mono text-2xl sm:text-3xl md:text-4xl font-bold"
+                  class="font-mono text-2xl sm:text-3xl font-bold"
                   style="color: var(--accent)"
                 >
                   {stat.value}
