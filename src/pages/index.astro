@@ -12,23 +12,44 @@ import { siteConfig } from "../config";
 import "../styles/global.css";
 ---
 
-<html lang="en">
+<html lang="en" style={`--accent-base: ${siteConfig.accentColor}`}>
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <meta
       http-equiv="Content-Security-Policy"
       content="upgrade-insecure-requests"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      href="/fonts/ibm-plex-mono-400.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
+    <link
+      rel="preload"
+      href="/fonts/ibm-plex-mono-700.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <script is:inline>
+      // Apply theme before first paint to avoid a flash of the wrong theme
+      (() => {
+        const stored = localStorage.getItem("theme");
+        const dark =
+          stored === "dark" ||
+          (!stored && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        if (dark) document.documentElement.classList.add("dark");
+      })();
+    </script>
     <title>{siteConfig.name} - {siteConfig.title}</title>
+    <link rel="canonical" href={siteConfig.seo.url} />
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#020617" media="(prefers-color-scheme: dark)" />
     <meta name="description" content={siteConfig.seo.description} />
     <meta name="keywords" content={siteConfig.seo.keywords} />
     <meta name="author" content={siteConfig.name} />
@@ -55,11 +76,11 @@ import "../styles/global.css";
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Shubham Kumar Rohit",
-        "url": "https://your-portfolio-url.com",
+        "url": "https://progshubham.github.io",
         "sameAs": [
           "https://github.com/progshubham",
-          "https://linkedin.com/in/shubham-kumar-rohit",
-          "https://twitter.com/progShubham"
+          "https://www.linkedin.com/in/shubhamkumarrohit/",
+          "https://x.com/progShubham"
         ],
         "jobTitle": "Software Engineering Head",
         "worksFor": {
@@ -81,9 +102,17 @@ import "../styles/global.css";
       }
     </script>
   </head>
-  <body>
+  <body
+    class="bg-gray-50 text-gray-900 antialiased dark:bg-gray-950 dark:text-gray-100"
+  >
+    <a
+      href="#about"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-white focus:dark:bg-gray-900 focus:shadow-lg"
+    >
+      Skip to content
+    </a>
     <Header />
-    <section>
+    <main>
       <Hero />
       <About />
       <Experience />
@@ -91,8 +120,63 @@ import "../styles/global.css";
       <Education />
       <Github />
       <Contact />
-    </section>
+    </main>
     <Footer />
+    <button
+      id="back-to-top"
+      type="button"
+      aria-label="Back to top"
+      class="fixed bottom-6 right-6 z-50 w-11 h-11 rounded-full text-white shadow-lg flex items-center justify-center cursor-pointer opacity-0 pointer-events-none translate-y-2 transition-all duration-300 hover:scale-110"
+      style="background-color: var(--accent)"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="w-5 h-5"
+      >
+        <path d="M12 19V5"></path>
+        <path d="M5 12l7-7 7 7"></path>
+      </svg>
+    </button>
+    <script>
+      // Lightweight scroll-reveal for sections (no library, ~0.3 KB)
+      const sections = document.querySelectorAll("main section[id]");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in-view");
+              observer.unobserve(entry.target);
+            }
+          }
+        },
+        { threshold: 0.08 }
+      );
+      sections.forEach((s) => {
+        s.classList.add("reveal");
+        observer.observe(s);
+      });
+
+      // Back-to-top button
+      const topBtn = document.getElementById("back-to-top");
+      const hideClasses = ["opacity-0", "pointer-events-none", "translate-y-2"];
+      window.addEventListener(
+        "scroll",
+        () => {
+          const show = window.scrollY > 600;
+          hideClasses.forEach((c) => topBtn?.classList.toggle(c, !show));
+        },
+        { passive: true }
+      );
+      topBtn?.addEventListener("click", () =>
+        window.scrollTo({ top: 0, behavior: "smooth" })
+      );
+    </script>
   </body>
 </html>
 

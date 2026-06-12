@@ -1,10 +1,17 @@
 export const siteConfig = {
   name: "Shubham Kumar Rohit",
-  ex: " | Ex-Doubtnut (50M+ users)",
+  ex: " · Ex-Doubtnut (50M+ users)",
   title: "Software Engineering Head @ Statiq",
-  subtitle: "Python | Go Lang | AWS | Microservices",
+  subtitle:
+    "I architect distributed systems that serve millions — and lead the teams that ship them.",
   description: "Portfolio website of Shubham Kumar Rohit",
-  accentColor: "#1d4ed8",
+  accentColor: "#1e40af",
+  stats: [
+    { value: "8+", label: "Years Experience" },
+    { value: "50M+", label: "Users Served" },
+    { value: "10M+", label: "Daily Messages Handled" },
+    { value: "99.9%", label: "Uptime Delivered" },
+  ],
   social: {
     phone: "+91-8699616342",
     email: "progShubham@gmail.com",
@@ -13,44 +20,60 @@ export const siteConfig = {
     github: "https://github.com/progshubham",
   },
   seo: {
-    description: "Shubham Kumar Rohit - Software Engineering Head at Statiq | Ex-Doubtnut (50M+ users). Experienced in Python, Go, AWS, Microservices & building scalable backend.",
+    description: "Shubham Kumar Rohit - Software Engineering Head at Statiq, Ex-Doubtnut (50M+ users). I architect distributed systems that serve millions and lead the engineering teams that ship them.",
     keywords: "Shubham Kumar Rohit, progShubham, Software Engineer, System Architect, Python, Go Lang, AWS, Microservices, Statiq, Doubtnut, EV Charging, WebSocket, Backend Developer, Full Stack Developer, High Concurrency Systems",
     url: "https://progshubham.github.io",
-    image: "https://scontent.fpat2-3.fna.fbcdn.net/v/t39.30808-6/332200300_743028780589871_5594315556749415248_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=OAyoGgIL3wUQ7kNvwGWNtQm&_nc_oc=AdlToMgBP7ua8edJq6ufWL95AeyAqHlxcS7Pr8FcDgwLWNDV8d8pk-aL53Wy7EPHNSoURv3oF0CDvxElbFHq3XLj&_nc_zt=23&_nc_ht=scontent.fpat2-3.fna&_nc_gid=bY8XXIEQ2CqbJNP5bByPzQ&oh=00_AfcXz3DbJ8lNeq7gfLHk-H1gWTxXdbKvjkiyaJ0-V4HW5g&oe=68F18C29",
+    image: "https://github.com/progshubham.png",
     twitterHandle: "@progShubham",
   },
-  aboutMe: ["I’m a software engineer and system architect with 8+ YOE passionate about building systems that scale seamlessly and solve real-world problems. I enjoy designing high-performance, reliable, and maintainable architectures, whether it’s powering real-time user communication, large-scale payment systems, or distributed cloud platforms.",
-    "Over the years, I’ve led backend and system design for India’s largest EV charging ecosystem at Statiq, built consumer-facing platforms serving 50M+ users at Doubtnut, and developed scalable services for millions of daily interactions at Coolwinks.",
-    "Beyond technology, I focus on team mentorship, clean engineering practices, and fostering collaboration, believing that great software comes from both robust systems and empowered teams."
+  aboutMe: [
+    "I'm a system architect and engineering leader with 8+ years of experience designing platforms that scale to millions of users. Today I head engineering at Statiq, where I own the end-to-end architecture behind India's largest EV-charging network.",
+    "My career is defined by shipped products at scale: payment orchestration platforms, real-time communication systems handling 10M+ daily messages, and high-concurrency WebSocket infrastructure sustaining hundreds of thousands of live connections at sub-200ms latency — delivered across Statiq, Doubtnut (50M+ users), and Coolwinks.",
+    "As a leader, I build and mentor engineering teams, set architecture and code-quality standards, and drive decisions from system design to production rollout — because great products come from robust systems and empowered engineers.",
   ],
-  skills: ["Python", "Go Lang", "AWS", "ElasticSearch", "Redis", "MySQL"],
+  skills: [
+    "Python",
+    "Go Lang",
+    "Node.js",
+    "FastAPI",
+    "AWS",
+    "Microservices",
+    "System Design",
+    "WebSocket",
+    "Kafka",
+    "Redis",
+    "ElasticSearch",
+    "MySQL",
+    "MongoDB",
+    "Docker",
+  ],
   projects: [
   {
     name: "Payflow",
+    company: "Statiq",
     description:
       "Centralized payment service supporting multiple payment methods, smart routing, refunds, and dynamic payment link generation. Enables seamless payment orchestration across platforms with Juspay, RazorPay, SBI ePay, PayU, Tata Wallet etc integrations and robust API architecture.",
-    link: "https://statiq.in",
     skills: ["GoLang", "AWS", "RDS", "Redis", "Microservices"],
   },
   {
     name: "Pigeon",
+    company: "Statiq",
     description:
       "Centralized notification service for managing multi-channel alerts across email, SMS, WhatsApp, and push notifications. Built for scale and reliability with real-time delivery tracking and analytics.",
-    link: "https://statiq.in",
     skills: ["Python", "Kafka", "Redis", "AWS Lambda", "SQS", "ElasticSearch"],
   },
   {
     name: "OCPP 1.6 EV Charging",
+    company: "Statiq",
     description:
       "High-concurrency WebSocket-based system supporting over 48,000 concurrent EV chargers. Designed for low-latency, real-time communication between chargers and backend, ensuring transaction reliability and uptime.",
-    link: "https://statiq.in",
     skills: ["FastAPI", "WebSocket", "Redis", "MySQL", "ElasticSearch", "AWS"],
   },
   {
-    name: "StudyGroup (Doubtnut)",
+    name: "StudyGroup",
+    company: "Doubtnut",
     description:
       "Scalable backend for real-time group learning and doubt-solving sessions with chat, media sharing, and live notifications, used by millions of students across India.",
-    link: "https://doubtnut.com",
     skills: ["Node.js", "Socket.io", "MongoDB", "Redis", "AWS"],
   },
 ],
@@ -75,6 +98,7 @@ export const siteConfig = {
   {
     company: "Doubtnut",
     title: "Software Development Engineer II",
+    url: "https://doubtnut.com",
     dateRange: "Jan 2021 - Oct 2022",
     bullets: [
       "Built the DN-Shorts (Video Reels) feature with a real-time, session-aware recommendation algorithm, increasing in-app engagement time by 13%; feature scaled to support 2.5–3 million DAUs.",
@@ -122,31 +146,16 @@ export const siteConfig = {
     link: "https://www.sbssugsp.ac.in",
     dateRange: "2013 - 2017",
     achievements: [
-      "Graduated with specialization in Computer Science and Engineering.",
       "Served as President of the Computer Society of India (CSI) at Beant College of Engineering & Technology, Gurdaspur.",
       "Led multiple technical workshops and coding events on Java, C++, and emerging web technologies.",
     ],
   },
   {
     school: "Kendriya Vidyalaya, Patna",
-    degree: "Senior Secondary (10+2)",
+    degree: "Senior Secondary (10+2), Science",
     link: "https://no1patna.kvs.ac.in",
     dateRange: "2011 - 2013",
-    achievements: [
-      "Excelled in core science subjects with strong analytical and problem-solving foundation.",
-      "Represented school in regional academic and science competitions.",
-      "Actively participated in leadership and discipline committees, fostering teamwork and responsibility.",
-    ],
-  },
-  {
-    school: "Kendriya Vidyalaya, Jehanabad",
-    degree: "Secondary (10th)",
-    link: "https://ainwan.kvs.ac.in",
-    dateRange: "2002 - 2011",
-    achievements: [
-      "Scout & Guide Captain and active participant in academic and leadership activities.",
-      "Consistent top rank holder throughout academic years.",
-    ],
+    achievements: [],
   },
 ],
 };

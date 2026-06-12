@@ -3,19 +3,93 @@ import { siteConfig } from "../config";
 ---
 
 <section id="contact" class="p-8 sm:p-12 md:p-16 lg:p-24">
-  <div>
+  <div class="max-w-7xl mx-auto">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
       <!-- Left Side -->
       <div class="lg:col-span-4">
+        <p class="font-mono text-sm mb-2" style="color: var(--accent)">// contact</p>
         <h2
-          class="text-3xl sm:text-4xl md:text-4xl xl:text-5xl font-bold text-gray-900"
+          class="text-3xl sm:text-4xl md:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-gray-100"
         >
           Contact Me
         </h2>
         <div
           class="w-[75px] h-[5px] mt-2 rounded-full"
-          style={`background-color: ${siteConfig.accentColor}`}
+          style="background-color: var(--accent)"
         >
+        </div>
+        <p class="mt-6 text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+          Have a project in mind, a role to discuss, or just want to talk
+          systems at scale? Drop a message or reach out directly.
+        </p>
+        <div class="mt-6 space-y-3">
+          <a
+            href={`mailto:${siteConfig.social.email}`}
+            class="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300 hover:text-[var(--accent)] dark:hover:text-[var(--accent)] transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-5 h-5 shrink-0"
+            >
+              <path
+                d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"
+              ></path>
+              <path d="M3 7l9 6l9 -6"></path>
+            </svg>
+            {siteConfig.social.email}
+          </a>
+          <a
+            href={`tel:${siteConfig.social.phone.replace(/[^+\d]/g, "")}`}
+            class="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300 hover:text-[var(--accent)] dark:hover:text-[var(--accent)] transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-5 h-5 shrink-0"
+            >
+              <path
+                d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"
+              ></path>
+            </svg>
+            {siteConfig.social.phone}
+          </a>
+          <a
+            href={siteConfig.social.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300 hover:text-[var(--accent)] dark:hover:text-[var(--accent)] transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-5 h-5 shrink-0"
+            >
+              <path d="M8 11v5"></path>
+              <path d="M8 8v.01"></path>
+              <path d="M12 16v-5"></path>
+              <path d="M16 16v-3a2 2 0 1 0 -4 0"></path>
+              <path
+                d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z"
+              ></path>
+            </svg>
+            LinkedIn
+          </a>
         </div>
       </div>
 
@@ -25,10 +99,10 @@ import { siteConfig } from "../config";
           id="contactForm"
           action="https://formspree.io/f/xvgwwjzd"
           method="POST"
-          class="space-y-6 bg-gray-50 p-6 rounded-2xl shadow-md"
+          class="space-y-6 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-6 rounded-2xl shadow-md dark:shadow-none"
         >
           <div>
-            <label for="name" class="block text-gray-700 font-medium mb-1">
+            <label for="name" class="block text-gray-700 dark:text-gray-300 font-medium mb-1">
               Your Name
             </label>
             <input
@@ -37,12 +111,12 @@ import { siteConfig } from "../config";
               name="name"
               autocomplete="given-name"
               required
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[${siteConfig.accentColor}]"
+              class="w-full px-4 py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent transition-colors"
             />
           </div>
 
           <div>
-            <label for="email" class="block text-gray-700 font-medium mb-1">
+            <label for="email" class="block text-gray-700 dark:text-gray-300 font-medium mb-1">
               Your Email
             </label>
             <input
@@ -51,12 +125,12 @@ import { siteConfig } from "../config";
               name="email"
               autocomplete="given-email"
               required
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[${siteConfig.accentColor}]"
+              class="w-full px-4 py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent transition-colors"
             />
           </div>
 
           <div>
-            <label for="phone" class="block text-gray-700 font-medium mb-1">
+            <label for="phone" class="block text-gray-700 dark:text-gray-300 font-medium mb-1">
               Your Phone
             </label>
             <input
@@ -64,12 +138,12 @@ import { siteConfig } from "../config";
               type="text"
               name="phone"
               autocomplete="tel"
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[${siteConfig.accentColor}]"
+              class="w-full px-4 py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent transition-colors"
             />
           </div>
 
           <div>
-            <label for="message" class="block text-gray-700 font-medium mb-1">
+            <label for="message" class="block text-gray-700 dark:text-gray-300 font-medium mb-1">
               Your Message
             </label>
             <textarea
@@ -77,19 +151,23 @@ import { siteConfig } from "../config";
               name="message"
               required
               rows="4"
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[${siteConfig.accentColor}]"
+              class="w-full px-4 py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent transition-colors"
             ></textarea>
           </div>
 
           <!-- Hidden IP field -->
           <input type="hidden" name="client_ip" id="client_ip" value="" />
 
-          <button
-            type="submit"
-            class="px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-lg sm:text-lg cursor-pointer font-medium transition-all duration-300 hover:bg-gray-800"
-          >
-            Send Message
-          </button>
+          <div class="flex flex-wrap items-center gap-4">
+            <button
+              type="submit"
+              class="px-5 py-2 text-white rounded-lg text-base sm:text-lg cursor-pointer font-medium transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-wait"
+              style="background-color: var(--accent)"
+            >
+              Send Message
+            </button>
+            <p id="form-status" role="status" class="text-sm"></p>
+          </div>
         </form>
       </div>
     </div>
@@ -98,14 +176,41 @@ import { siteConfig } from "../config";
 
 <!-- ✅ Run in browser (client-side only) -->
 <script is:inline>
-  window.addEventListener("DOMContentLoaded", async () => {
+  // Submit via fetch so visitors stay on the page and get inline feedback.
+  // The IP lookup happens here, at submit time, instead of on page load —
+  // visitors who never use the form never pay for the third-party request.
+  const form = document.getElementById("contactForm");
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    const status = document.getElementById("form-status");
+    btn.disabled = true;
+    btn.textContent = "Sending…";
     try {
-      const res = await fetch("https://api.ipify.org?format=json");
-      const data = await res.json();
-      document.querySelector("#client_ip").value = data.ip;
-    } catch (err) {
-      console.warn("Failed to fetch client IP:", err);
+      const ipRes = await fetch("https://api.ipify.org?format=json", {
+        signal: AbortSignal.timeout(3000),
+      });
+      const ipData = await ipRes.json();
+      document.querySelector("#client_ip").value = ipData.ip;
+    } catch {
       document.querySelector("#client_ip").value = "Unavailable";
+    }
+    try {
+      const res = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+      if (!res.ok) throw new Error("Request failed");
+      form.reset();
+      status.textContent = "Thanks! Your message has been sent.";
+      status.className = "text-sm text-green-600 dark:text-green-400";
+    } catch {
+      status.textContent = "Something went wrong — please email me directly.";
+      status.className = "text-sm text-red-600 dark:text-red-400";
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Send Message";
     }
   });
 </script>

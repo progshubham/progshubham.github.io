@@ -4,91 +4,228 @@ import { siteConfig } from "../config";
 const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
 const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
 const hasEducation = siteConfig.education && siteConfig.education.length > 0;
+
+const initials = siteConfig.name
+  .split(" ")
+  .map((w) => w[0])
+  .slice(0, 2)
+  .join("");
+
+const navLinks = [
+  { href: "#about", label: "About", show: true },
+  { href: "#experience", label: "Experience", show: hasExperience },
+  { href: "#projects", label: "Projects", show: hasProjects },
+  { href: "#education", label: "Education", show: hasEducation },
+  { href: "#github", label: "GitHub", show: true },
+  { href: "#contact", label: "Contact", show: true },
+].filter((l) => l.show);
 ---
 
 <header
   id="header"
-  class="fixed top-0 left-0 right-0 z-50 hidden md:block transition-all duration-300"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
 >
-  <nav class="max-w-7xl mx-auto px-8 py-4">
-    <ul class="flex items-center gap-8 justify-center">
-      <li>
-        <a
-          href="#about"
-          class="text-gray-700 hover:text-black transition-colors font-medium"
-        >
-          About
-        </a>
-      </li>
+  <nav
+    class="max-w-7xl mx-auto px-4 sm:px-8 py-3 sm:py-4 flex items-center justify-between gap-4"
+  >
+    <a
+      href="#hero"
+      aria-label="Back to top"
+      class="font-mono flex items-center justify-center w-9 h-9 rounded-lg text-sm font-bold text-white shrink-0 transition-transform duration-200 hover:scale-105"
+      style="background-color: var(--accent)"
+    >
+      {initials}
+    </a>
+
+    <ul class="hidden md:flex items-center gap-8">
       {
-        hasExperience && (
+        navLinks.map((link) => (
           <li>
             <a
-              href="#experience"
-              class="text-gray-700 hover:text-black transition-colors font-medium"
+              href={link.href}
+              data-navlink
+              class="text-sm font-medium text-gray-700 hover:text-[var(--accent)] dark:text-gray-300 dark:hover:text-[var(--accent)] transition-colors"
             >
-              Experience
+              {link.label}
             </a>
           </li>
-        )
+        ))
       }
-      {
-        hasProjects && (
-          <li>
-            <a
-              href="#projects"
-              class="text-gray-700 hover:text-black transition-colors font-medium"
-            >
-              Projects
-            </a>
-          </li>
-        )
-      }
-      {
-        hasEducation && (
-          <li>
-            <a
-              href="#education"
-              class="text-gray-700 hover:text-black transition-colors font-medium"
-            >
-              Education
-            </a>
-          </li>
-        )
-      }
-      <li>
-        <a
-          href="#github"
-          class="text-gray-700 hover:text-black transition-colors font-medium"
-        >
-          GitHub
-        </a>
-      </li>
-      <li>
-        <a
-          href="#contact"
-          class="text-gray-700 hover:text-black transition-colors font-medium"
-        >
-          Contact
-        </a>
-      </li>
     </ul>
+
+    <div class="flex items-center gap-2">
+      <button
+        id="theme-toggle"
+        type="button"
+        aria-label="Toggle dark mode"
+        class="flex items-center justify-center w-9 h-9 rounded-lg shrink-0 cursor-pointer text-gray-700 hover:text-[var(--accent)] dark:text-gray-300 dark:hover:text-[var(--accent)] border border-gray-200 dark:border-gray-700 bg-white/60 dark:bg-gray-900/60 transition-colors duration-200"
+      >
+        <!-- Sun (shown in dark mode) -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="hidden dark:block w-5 h-5"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+          <path
+            d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"
+          ></path>
+        </svg>
+        <!-- Moon (shown in light mode) -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="dark:hidden w-5 h-5"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <path
+            d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"
+          ></path>
+        </svg>
+      </button>
+
+      <button
+        id="menu-toggle"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        class="md:hidden flex items-center justify-center w-9 h-9 rounded-lg shrink-0 cursor-pointer text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 bg-white/60 dark:bg-gray-900/60 transition-colors duration-200"
+      >
+        <!-- Hamburger -->
+        <svg
+          id="menu-icon-open"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          class="w-5 h-5"
+        >
+          <path d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <!-- Close -->
+        <svg
+          id="menu-icon-close"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          class="w-5 h-5 hidden"
+        >
+          <path d="M6 6l12 12M6 18L18 6"></path>
+        </svg>
+      </button>
+    </div>
   </nav>
+
+  <!-- Mobile menu panel -->
+  <div
+    id="mobile-menu"
+    class="md:hidden hidden border-t border-gray-200 dark:border-gray-800 bg-gray-50/95 dark:bg-gray-950/95 backdrop-blur-md"
+  >
+    <ul class="px-4 py-3 space-y-1">
+      {
+        navLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="block px-3 py-2.5 rounded-lg text-base font-medium text-gray-700 dark:text-gray-300 hover:text-[var(--accent)] hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </header>
 
 <script>
-  window.addEventListener("scroll", () => {
-    const header = document.getElementById("header");
-    if (window.scrollY > 100) {
-      header?.classList.add("bg-white/80", "backdrop-blur-sm");
-    } else {
-      header?.classList.remove("bg-white/80", "backdrop-blur-sm");
-    }
-  });
-</script>
+  const header = document.getElementById("header");
+  const onScroll = () => {
+    const scrolled = window.scrollY > 50;
+    header?.classList.toggle("bg-gray-50/80", scrolled);
+    header?.classList.toggle("dark:bg-gray-950/80", scrolled);
+    header?.classList.toggle("backdrop-blur-md", scrolled);
+    header?.classList.toggle("shadow-sm", scrolled);
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 
-<style>
-  html {
-    scroll-behavior: smooth;
-  }
-</style>
+  document.getElementById("theme-toggle")?.addEventListener("click", () => {
+    const isDark = document.documentElement.classList.toggle("dark");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  });
+
+  // Track OS theme changes live unless the visitor picked a theme manually
+  window
+    .matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", (e) => {
+      if (!localStorage.getItem("theme")) {
+        document.documentElement.classList.toggle("dark", e.matches);
+      }
+    });
+
+  // Mobile menu
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const iconOpen = document.getElementById("menu-icon-open");
+  const iconClose = document.getElementById("menu-icon-close");
+
+  const setMenu = (open: boolean) => {
+    mobileMenu?.classList.toggle("hidden", !open);
+    iconOpen?.classList.toggle("hidden", open);
+    iconClose?.classList.toggle("hidden", !open);
+    menuToggle?.setAttribute("aria-expanded", String(open));
+    // Solid header behind the open panel regardless of scroll position
+    if (open) {
+      header?.classList.add("bg-gray-50/95", "dark:bg-gray-950/95", "backdrop-blur-md");
+    } else {
+      header?.classList.remove("bg-gray-50/95", "dark:bg-gray-950/95");
+      onScroll();
+    }
+  };
+
+  menuToggle?.addEventListener("click", () =>
+    setMenu(mobileMenu?.classList.contains("hidden") ?? false)
+  );
+  mobileMenu?.querySelectorAll("a").forEach((a) =>
+    a.addEventListener("click", () => setMenu(false))
+  );
+
+  // Scrollspy: highlight the nav link for the section in view
+  const navlinks = [...document.querySelectorAll<HTMLAnchorElement>("[data-navlink]")];
+  const byId = new Map(
+    navlinks.map((l) => [l.getAttribute("href")?.slice(1), l])
+  );
+  const spy = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        const active = byId.get(entry.target.id);
+        if (!active) continue;
+        navlinks.forEach((l) => l.classList.remove("text-[var(--accent)]"));
+        active.classList.add("text-[var(--accent)]");
+      }
+    },
+    { rootMargin: "-30% 0px -60% 0px" }
+  );
+  document
+    .querySelectorAll("main section[id]")
+    .forEach((s) => spy.observe(s));
+</script>

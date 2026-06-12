@@ -1,0 +1,45 @@
+---
+import { siteConfig } from "../config";
+import "../styles/global.css";
+---
+
+<html lang="en" style={`--accent-base: ${siteConfig.accentColor}`}>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex" />
+    <title>404 — Page not found | {siteConfig.name}</title>
+    <script is:inline>
+      (() => {
+        const stored = localStorage.getItem("theme");
+        const dark =
+          stored === "dark" ||
+          (!stored && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        if (dark) document.documentElement.classList.add("dark");
+      })();
+    </script>
+  </head>
+  <body
+    class="bg-gray-50 text-gray-900 antialiased dark:bg-gray-950 dark:text-gray-100"
+  >
+    <main class="min-h-screen flex items-center justify-center p-8">
+      <div class="text-center">
+        <p class="font-mono text-sm mb-2" style="color: var(--accent)">// not-found</p>
+        <h1 class="text-7xl sm:text-8xl font-bold" style="color: var(--accent)">
+          404
+        </h1>
+        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
+          This page doesn't exist — but my portfolio does.
+        </p>
+        <a
+          href="/"
+          class="inline-block mt-8 px-6 py-3 rounded-lg text-white font-medium shadow-sm transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
+          style="background-color: var(--accent)"
+        >
+          ← Back to home
+        </a>
+      </div>
+    </main>
+  </body>
+</html>
