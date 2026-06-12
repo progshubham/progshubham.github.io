@@ -8,19 +8,20 @@ const START_YEAR = 2023;
 <section
   id="github"
   aria-label="GitHub Contributions by Shubham Kumar Rohit"
-  class="p-8 sm:p-12 md:p-16 lg:p-24 bg-gray-50"
+  class="p-8 sm:p-12 md:p-16 lg:p-24 bg-gray-100/60 dark:bg-gray-900/40"
 >
-  <div>
+  <div class="max-w-7xl mx-auto">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
       <div class="lg:col-span-4">
-        <h2 class="text-3xl sm:text-4xl md:text-4xl xl:text-5xl font-bold text-gray-900">
+        <p class="text-sm mb-2" style="color: var(--accent)">// github</p>
+        <h2 class="text-3xl sm:text-4xl md:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-gray-100">
           GitHub Contributions
         </h2>
         <div
           class="w-[75px] h-[5px] mt-2 rounded-full"
-          style={`background-color: ${siteConfig.accentColor}`}
+          style="background-color: var(--accent)"
         ></div>
-        <p class="mt-4 text-gray-600 text-sm leading-relaxed">
+        <p class="mt-4 text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
           Year-by-year view of my open-source and private code activity on
           GitHub — commits, pull requests, reviews, and issue contributions.
         </p>
@@ -28,7 +29,7 @@ const START_YEAR = 2023;
 
       <div id="github-graphs" class="lg:col-span-8 space-y-10">
         <!-- Loading skeleton -->
-        <div class="flex items-center justify-center py-16 text-gray-400">
+        <div class="flex items-center justify-center py-16 text-gray-400 dark:text-gray-500">
           Loading contributions…
         </div>
       </div>
@@ -37,7 +38,8 @@ const START_YEAR = 2023;
 </section>
 
 <script is:inline define:vars={{ username, START_YEAR, name: siteConfig.name }}>
-  const LEVEL_COLORS = ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"];
+  // CSS variables defined in global.css — adapt automatically to dark/light theme
+  const LEVEL_COLORS = ["var(--gh-0)", "var(--gh-1)", "var(--gh-2)", "var(--gh-3)", "var(--gh-4)"];
   const MONTH_NAMES = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   const DAY_LABELS = ["", "Mon", "", "Wed", "", "Fri", ""];
 
@@ -100,7 +102,7 @@ const START_YEAR = 2023;
 
   function renderYear(year, weeks, monthLabels) {
     const card = document.createElement("div");
-    card.className = "bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all";
+    card.className = "bg-white dark:bg-gray-900 border border-transparent dark:border-gray-800 p-4 sm:p-6 rounded-xl shadow-md hover:shadow-lg dark:shadow-none dark:hover:border-gray-700 transition-all";
 
     // Year heading
     const heading = document.createElement("div");
@@ -109,7 +111,7 @@ const START_YEAR = 2023;
     link.href = `https://github.com/${username}?tab=overview&from=${year}-01-01&to=${year}-12-31`;
     link.target = "_blank";
     link.rel = "noopener noreferrer";
-    link.className = "text-2xl sm:text-3xl font-semibold text-gray-800 hover:underline";
+    link.className = "text-2xl sm:text-3xl font-semibold text-gray-800 dark:text-gray-200 hover:underline";
     link.textContent = year;
     heading.appendChild(link);
     card.appendChild(heading);

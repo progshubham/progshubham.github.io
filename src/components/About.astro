@@ -3,17 +3,18 @@ import { siteConfig } from "../config";
 ---
 
 <section id="about" class="p-8 sm:p-12 md:p-16 lg:p-24">
-  <div>
+  <div class="max-w-7xl mx-auto">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
       <div class="lg:col-span-4">
+        <p class="text-sm mb-2" style="color: var(--accent)">// about</p>
         <h2
-          class="text-3xl sm:text-4xl md:text-4xl xl:text-5xl font-bold text-gray-900"
+          class="text-3xl sm:text-4xl md:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-gray-100"
         >
           About Me
         </h2>
         <div
           class="w-[75px] h-[5px] mt-2 rounded-full"
-          style={`background-color: ${siteConfig.accentColor}`}
+          style="background-color: var(--accent)"
         >
         </div>
       </div>
@@ -21,7 +22,7 @@ import { siteConfig } from "../config";
       <div class="lg:col-span-8 space-y-8">
         {
           siteConfig.aboutMe.map((paragraph) => (
-            <p class="text-lg sm:text-xl md:text-2xl leading-relaxed text-gray-600">
+            <p class="text-lg sm:text-xl md:text-2xl leading-relaxed text-gray-600 dark:text-gray-400">
               {paragraph}
             </p>
           ))
@@ -31,7 +32,7 @@ import { siteConfig } from "../config";
           <div class="flex flex-wrap gap-3">
             {
               siteConfig.skills.map((skill) => (
-                <span class="px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200">
+                <span class="px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 hover:-translate-y-0.5 transition-all duration-200">
                   {skill}
                 </span>
               ))

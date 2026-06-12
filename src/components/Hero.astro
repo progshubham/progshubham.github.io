@@ -2,20 +2,12 @@
 import { siteConfig } from "../config";
 ---
 
-<div
-  id="hero"
-  class="relative isolate overflow-hidden bg-white py-24 md:h-screen"
-  style={`--accent-color: ${siteConfig.accentColor}`}
->
+<div id="hero" class="relative isolate overflow-hidden py-24 md:py-0 md:min-h-screen">
   <!-- Gradient overlay -->
-  <div
-    class="absolute inset-0 -z-10"
-    style={`background: radial-gradient(ellipse 800px 1200px at 0% 0%, ${siteConfig.accentColor}40 0%, ${siteConfig.accentColor}25 20%, ${siteConfig.accentColor}10 40%, rgba(255, 255, 255, 0.3) 70%, rgba(255, 255, 255, 0.8) 90%, white 100%)`}
-  >
-  </div>
+  <div class="absolute inset-0 -z-10 hero-gradient"></div>
   <svg
     aria-hidden="true"
-    class="absolute inset-0 -z-10 size-full stroke-gray-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
+    class="absolute inset-0 -z-10 size-full stroke-gray-200 dark:stroke-gray-800 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
   >
     <defs>
       <pattern
@@ -129,40 +121,79 @@ import { siteConfig } from "../config";
       height="100%"
       stroke-width={0}></rect>
   </svg>
-  <div class="h-full mx-auto p-8 sm:p-12 md:p-24 flex items-center">
+  <div
+    class="max-w-7xl mx-auto p-8 sm:p-12 md:px-16 lg:px-24 md:min-h-screen md:py-24 md:pb-40 flex items-center"
+  >
     <div>
       <h2
-        class="text-pretty text-xl sm:text-2xl md:text-5xl font-bold tracking-tight text-gray-700 animate-fade-in"
+        class="text-pretty text-xl sm:text-2xl md:text-5xl font-bold tracking-tight text-gray-700 dark:text-gray-300 animate-fade-in"
       >
         Hello! 👋
       </h2>
       <h1
-        class="mt-6 sm:mt-8 md:mt-10 text-pretty text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold tracking-tight text-gray-800 animate-fade-in animation-delay-200"
+        class="mt-6 sm:mt-8 md:mt-10 text-pretty text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold tracking-tight text-gray-800 dark:text-gray-100 animate-fade-in animation-delay-200"
       >
-        I'm <span style={{ color: siteConfig.accentColor }}
-          >{siteConfig.name}</span
-        >
+        I'm <span style="color: var(--accent)">{siteConfig.name}</span>
       </h1>
       <p
-        class="mt-4 sm:mt-6 md:mt-8 text-pretty text-base sm:text-lg md:text-xl/8 font-medium text-gray-600 animate-fade-in animation-delay-400"
+        class="mt-4 sm:mt-6 md:mt-8 text-pretty text-base sm:text-lg md:text-xl/8 font-medium text-gray-600 dark:text-gray-400 animate-fade-in animation-delay-400"
       >
         {siteConfig.title} {siteConfig.ex}
       </p>
       <p
-        class="mt-2 sm:mt-4 md:mt-6 text-pretty text-base sm:text-lg md:text-xl/8 font-small text-gray-600 animate-fade-in animation-delay-400">
+        class="mt-2 sm:mt-4 md:mt-6 text-pretty text-base sm:text-lg md:text-xl/8 font-normal text-gray-600 dark:text-gray-400 animate-fade-in animation-delay-400">
         {siteConfig.subtitle}
       </p>
+
+      <div
+        class="mt-8 sm:mt-10 flex flex-wrap gap-3 sm:gap-4 animate-fade-in animation-delay-600"
+      >
+        <a
+          href="#projects"
+          class="px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg text-white text-sm sm:text-base font-medium shadow-sm transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5 hover:shadow-md"
+          style="background-color: var(--accent)"
+        >
+          View Projects
+        </a>
+        <a
+          href="#contact"
+          class="px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-medium border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 bg-white/50 dark:bg-gray-900/50 transition-all duration-300 hover:border-[var(--accent)] hover:text-[var(--accent)] hover:-translate-y-0.5"
+        >
+          Get in Touch
+        </a>
+      </div>
+
+      {
+        siteConfig.stats && siteConfig.stats.length > 0 && (
+          <dl class="mt-10 sm:mt-14 flex flex-wrap gap-x-10 gap-y-6 animate-fade-in animation-delay-600">
+            {siteConfig.stats.map((stat) => (
+              <div>
+                <dt class="sr-only">{stat.label}</dt>
+                <dd
+                  class="text-2xl sm:text-3xl md:text-4xl font-bold"
+                  style="color: var(--accent)"
+                >
+                  {stat.value}
+                </dd>
+                <dd class="mt-1 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+                  {stat.label}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        )
+      }
     </div>
   </div>
   <div
-    class="absolute bottom-0 left-0 right-0 p-8 sm:p-12 md:p-24 flex gap-x-4 sm:gap-x-6 md:gap-x-8 text-gray-700 animate-fade-in animation-delay-600"
+    class="absolute bottom-0 left-0 right-0 max-w-7xl mx-auto p-8 sm:p-12 md:px-16 md:py-12 lg:px-24 flex gap-x-4 sm:gap-x-6 md:gap-x-8 text-gray-700 dark:text-gray-300 animate-fade-in animation-delay-600"
   >
     {
       siteConfig.social?.email && (
         <a
           href={`mailto:${siteConfig.social.email}`}
           aria-label="Email"
-          class="transition-colors duration-300 hover:text-[var(--accent-color)]"
+          class="transition-colors duration-300 hover:text-[var(--accent)]"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -190,7 +221,7 @@ import { siteConfig } from "../config";
           target="_blank"
           rel="noopener noreferrer"
           aria-label="LinkedIn"
-          class="transition-colors duration-300 hover:text-[var(--accent-color)]"
+          class="transition-colors duration-300 hover:text-[var(--accent)]"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -223,7 +254,7 @@ import { siteConfig } from "../config";
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Twitter"
-          class="transition-colors duration-300 hover:text-[var(--accent-color)]"
+          class="transition-colors duration-300 hover:text-[var(--accent)]"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -253,7 +284,7 @@ import { siteConfig } from "../config";
           target="_blank"
           rel="noopener noreferrer"
           aria-label="GitHub"
-          class="transition-colors duration-300 hover:text-[var(--accent-color)]"
+          class="transition-colors duration-300 hover:text-[var(--accent)]"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -305,5 +336,15 @@ import { siteConfig } from "../config";
 
   .animation-delay-600 {
     animation-delay: 0.6s;
+  }
+
+  .hero-gradient {
+    background: radial-gradient(
+      ellipse 800px 1200px at 0% 0%,
+      color-mix(in srgb, var(--accent) 25%, transparent) 0%,
+      color-mix(in srgb, var(--accent) 15%, transparent) 20%,
+      color-mix(in srgb, var(--accent) 6%, transparent) 40%,
+      transparent 70%
+    );
   }
 </style>
