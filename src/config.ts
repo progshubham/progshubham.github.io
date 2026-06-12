@@ -8,8 +8,8 @@ export const siteConfig = {
   stats: [
     { value: "8+", label: "Years Experience" },
     { value: "50M+", label: "Users Served" },
-    { value: "48K+", label: "EV Chargers Powered" },
-    { value: "3.8L+", label: "Concurrent Sockets" },
+    { value: "10M+", label: "Daily Messages Handled" },
+    { value: "99.9%", label: "Uptime Delivered" },
   ],
   social: {
     phone: "+91-8699616342",
