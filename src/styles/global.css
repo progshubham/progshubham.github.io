@@ -1,6 +1,15 @@
 @import "tailwindcss";
 
-/* Self-hosted IBM Plex Mono (latin subset) — no third-party font requests */
+/* Self-hosted Inter variable font (latin) — body typography */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/fonts/inter-var.woff2") format("woff2");
+}
+
+/* Self-hosted IBM Plex Mono (latin subset) — accent typography only */
 @font-face {
   font-family: "IBM Plex Mono";
   font-style: normal;
@@ -35,6 +44,9 @@
 /* Refined Blue theme: remap the gray scale to slate so the whole site
    uses cool blue-tinted neutrals without touching every component */
 @theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
   --color-gray-50: #f8fafc;
   --color-gray-100: #f1f5f9;
   --color-gray-200: #e2e8f0;
@@ -86,7 +98,7 @@ section[id],
 }
 
 body {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-sans);
   transition:
     background-color 0.3s ease,
     color 0.3s ease;

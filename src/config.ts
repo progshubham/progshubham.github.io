@@ -1,8 +1,9 @@
 export const siteConfig = {
   name: "Shubham Kumar Rohit",
-  ex: " | Ex-Doubtnut (50M+ users)",
-  title: "Software Engineering Head @ Statiq",
-  subtitle: "Python | Go Lang | AWS | Microservices",
+  ex: " · Ex-Doubtnut (50M+ users)",
+  title: "System Architect & Engineering Head @ Statiq",
+  subtitle:
+    "I architect distributed systems that serve millions — and lead the teams that ship them.",
   description: "Portfolio website of Shubham Kumar Rohit",
   accentColor: "#1e40af",
   stats: [
@@ -19,15 +20,16 @@ export const siteConfig = {
     github: "https://github.com/progshubham",
   },
   seo: {
-    description: "Shubham Kumar Rohit - Software Engineering Head at Statiq | Ex-Doubtnut (50M+ users). Experienced in Python, Go, AWS, Microservices & building scalable backend.",
+    description: "Shubham Kumar Rohit - System Architect & Engineering Head at Statiq, Ex-Doubtnut (50M+ users). I architect distributed systems that serve millions and lead the engineering teams that ship them.",
     keywords: "Shubham Kumar Rohit, progShubham, Software Engineer, System Architect, Python, Go Lang, AWS, Microservices, Statiq, Doubtnut, EV Charging, WebSocket, Backend Developer, Full Stack Developer, High Concurrency Systems",
     url: "https://progshubham.github.io",
     image: "https://github.com/progshubham.png",
     twitterHandle: "@progShubham",
   },
-  aboutMe: ["I’m a software engineer and system architect with 8+ YOE passionate about building systems that scale seamlessly and solve real-world problems. I enjoy designing high-performance, reliable, and maintainable architectures, whether it’s powering real-time user communication, large-scale payment systems, or distributed cloud platforms.",
-    "Over the years, I’ve led backend and system design for India’s largest EV charging ecosystem at Statiq, built consumer-facing platforms serving 50M+ users at Doubtnut, and developed scalable services for millions of daily interactions at Coolwinks.",
-    "Beyond technology, I focus on team mentorship, clean engineering practices, and fostering collaboration, believing that great software comes from both robust systems and empowered teams."
+  aboutMe: [
+    "I'm a system architect and engineering leader with 8+ years of experience designing platforms that scale to millions of users. Today I head engineering at Statiq, where I own the end-to-end architecture behind India's largest EV-charging network.",
+    "My career is defined by shipped products at scale: payment orchestration platforms, real-time communication systems handling 10M+ daily messages, and high-concurrency WebSocket infrastructure sustaining hundreds of thousands of live connections at sub-200ms latency — delivered across Statiq, Doubtnut (50M+ users), and Coolwinks.",
+    "As a leader, I build and mentor engineering teams, set architecture and code-quality standards, and drive decisions from system design to production rollout — because great products come from robust systems and empowered engineers.",
   ],
   skills: [
     "Python",
