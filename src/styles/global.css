@@ -49,7 +49,7 @@
 }
 
 :root {
-  --accent: var(--accent-base, #0ea5e9);
+  --accent: var(--accent-base, #1e40af);
   --gh-0: #ebedf0;
   --gh-1: #9be9a8;
   --gh-2: #40c463;
@@ -58,8 +58,8 @@
 }
 
 .dark {
-  /* Brighten the accent for contrast on dark backgrounds */
-  --accent: color-mix(in srgb, var(--accent-base, #0ea5e9) 70%, #7dd3fc);
+  /* Navy is too dark for dark backgrounds — lift it toward steel blue */
+  --accent: color-mix(in srgb, var(--accent-base, #1e40af) 50%, #93c5fd);
   --gh-0: #1f2937;
   --gh-1: #0e4429;
   --gh-2: #006d32;

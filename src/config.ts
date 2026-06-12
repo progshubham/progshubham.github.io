@@ -4,7 +4,7 @@ export const siteConfig = {
   title: "Software Engineering Head @ Statiq",
   subtitle: "Python | Go Lang | AWS | Microservices",
   description: "Portfolio website of Shubham Kumar Rohit",
-  accentColor: "#0ea5e9",
+  accentColor: "#1e40af",
   stats: [
     { value: "8+", label: "Years Experience" },
     { value: "50M+", label: "Users Served" },
