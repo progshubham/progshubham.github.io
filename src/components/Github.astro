@@ -203,15 +203,50 @@ const START_YEAR = 2023;
         const contributions = await fetchContributions(year);
         const weeks = buildCalendar(year, contributions);
         const monthLabels = getMonthLabels(weeks);
-        return { year, weeks, monthLabels };
+        return { year, contributions, weeks, monthLabels };
       })
     );
 
     container.innerHTML = "";
+
+    // API down or returned nothing — link to the profile instead of a blank section
+    if (results.every((r) => r.contributions.length === 0)) {
+      const fallback = document.createElement("div");
+      fallback.className =
+        "flex flex-col items-center justify-center py-16 gap-3 text-gray-500 dark:text-gray-400";
+      const msg = document.createElement("p");
+      msg.textContent = "Couldn't load the contribution graphs right now.";
+      const profileLink = document.createElement("a");
+      profileLink.href = `https://github.com/${username}`;
+      profileLink.target = "_blank";
+      profileLink.rel = "noopener noreferrer";
+      profileLink.className = "font-medium hover:underline";
+      profileLink.style.color = "var(--accent)";
+      profileLink.textContent = `View my activity on GitHub →`;
+      fallback.append(msg, profileLink);
+      container.appendChild(fallback);
+      return;
+    }
+
     results.forEach(({ year, weeks, monthLabels }) => {
       container.appendChild(renderYear(year, weeks, monthLabels));
     });
   }
 
-  init();
+  // Defer the API calls until the section is near the viewport
+  const section = document.getElementById("github");
+  if (section && "IntersectionObserver" in window) {
+    const lazy = new IntersectionObserver(
+      (entries, obs) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          obs.disconnect();
+          init();
+        }
+      },
+      { rootMargin: "600px 0px" }
+    );
+    lazy.observe(section);
+  } else {
+    init();
+  }
 </script>

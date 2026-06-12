@@ -96,6 +96,7 @@ export const siteConfig = {
   {
     company: "Doubtnut",
     title: "Software Development Engineer II",
+    url: "https://doubtnut.com",
     dateRange: "Jan 2021 - Oct 2022",
     bullets: [
       "Built the DN-Shorts (Video Reels) feature with a real-time, session-aware recommendation algorithm, increasing in-app engagement time by 13%; feature scaled to support 2.5–3 million DAUs.",
