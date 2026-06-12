@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Shubham Kumar Rohit",
   ex: " · Ex-Doubtnut (50M+ users)",
-  title: "System Architect & Engineering Head @ Statiq",
+  title: "Software Engineering Head @ Statiq",
   subtitle:
     "I architect distributed systems that serve millions — and lead the teams that ship them.",
   description: "Portfolio website of Shubham Kumar Rohit",
@@ -20,7 +20,7 @@ export const siteConfig = {
     github: "https://github.com/progshubham",
   },
   seo: {
-    description: "Shubham Kumar Rohit - System Architect & Engineering Head at Statiq, Ex-Doubtnut (50M+ users). I architect distributed systems that serve millions and lead the engineering teams that ship them.",
+    description: "Shubham Kumar Rohit - Software Engineering Head at Statiq, Ex-Doubtnut (50M+ users). I architect distributed systems that serve millions and lead the engineering teams that ship them.",
     keywords: "Shubham Kumar Rohit, progShubham, Software Engineer, System Architect, Python, Go Lang, AWS, Microservices, Statiq, Doubtnut, EV Charging, WebSocket, Backend Developer, Full Stack Developer, High Concurrency Systems",
     url: "https://progshubham.github.io",
     image: "https://github.com/progshubham.png",
